@@ -1,8 +1,31 @@
 const styles = {
-    Button: {
+    navButtons: {
         width: "500px",
         height: "100px",
         margin: "8px",
         backgroundColor: "black",
+        textTransform: "none",
+        "&:hover": {
+            backgroundColor: "white",
+            color: "black"
+        }
     },
+    signOut: {
+        backgroundColor: "white",
+        color: "black",
+        "&:hover": {
+            backgroundColor: "grey",
+            color: "white"
+        }
+    },
+    sideBar: {
+        backgroundColor: "black",
+        color: "white"
+    },
+    sideBarItem: {
+        "&:hover": {
+            backgroundColor: "white",
+            color: "black"
+        }
+    }
 }; export default styles;
