@@ -9,16 +9,16 @@ function HomePage() {
     <Header></Header>
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gridTemplateRows: 'repeat(2, 1fr)', gap: '16px' }}>
-        <Link href="/Q&A">
+        <Link href="/Q&A?type=Behavioral">
           <Button variant="contained" color="primary" size="large" sx={{ ...styles.navButtons }}>Behavioral Questions</Button>
         </Link>
-        <Link href="/Q&A">
+        <Link href="/Q&A?type=Technical">
           <Button variant="contained" color="primary" size="large" sx={{ ...styles.navButtons }}>Technical Questions</Button>
         </Link>
-        <Link href="/Q&A">
+        <Link href="/Q&A?type=STAR">
           <Button variant="contained" color="primary" size="large" sx={{ ...styles.navButtons }}>STAR Questions</Button>
         </Link>
-        <Link href="/Q&A">
+        <Link href="/Q&A?type=Personality">
           <Button variant="contained" color="primary" size="large" sx={{ ...styles.navButtons }}>Personality Questions</Button>
         </Link>
         <Link href="/Q&A">

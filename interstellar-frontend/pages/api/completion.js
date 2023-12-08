@@ -16,7 +16,7 @@ export default async function POST(req) {
   const response = await openai.completions.create({
     model: 'text-davinci-003',
     stream: true,
-    temperature: 0.6,
+    temperature: 0.75,
     max_tokens: 300,
     prompt: prompt,
   });

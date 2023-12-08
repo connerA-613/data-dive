@@ -1,12 +1,18 @@
 import React, { componentDidMount, useEffect} from 'react';
-import { Box, TextField, Typography, Button, Modal, Link} from '@mui/material';
+import { Box, TextField, Typography, Button, Modal} from '@mui/material';
 import Header from '../components/Header';
 import SideBar from '../components/sidebar'
 import styles from '../styles/styles';
 import { useCompletion } from 'ai/react';
+import Link from 'next/link'
+import { useSearchParams } from 'next/navigation';
 
 function QandAPage() {
   const { completion, input, handleInputChange, handleSubmit } = useCompletion();
+
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type');
+  console.log(type);
 
   function handlingSubmit(event) {
     event.preventDefault();
@@ -18,7 +24,9 @@ function QandAPage() {
     api: '/api/completion',
   })
 
-
+  useEffect(() => {
+    newQuestion();
+  }, [type])
 
   const [question, setQuestion] = React.useState(null);
   const [questionStatus, setQuestionStatus] = React.useState(false);
@@ -26,8 +34,13 @@ function QandAPage() {
   const [feedback, setFeedback] = React.useState(null);
 
   async function fetchQuestion() {
-    const completion = await complete('ask me a technical questionn for a data analyst job interview');
-    setQuestion(completion);
+    if (type == "STAR") {
+      const completion = await complete('ask me a question that would require the STAR method (situation, task, action and result) to answer for a data analyst job interview.');
+      setQuestion(completion);
+    } else {
+      const completion = await complete(`ask me a ${type} question for a data analyst job interview`);
+      setQuestion(completion);
+    }
     setQuestionStatus(true);
   }
 
@@ -44,8 +57,22 @@ function QandAPage() {
     }
   }
 
+  const newQuestion = () => {
+    if (answerProvided == true) {
+      setAnswerProvided(false);
+    }
+    if (feedback != null) {
+      setFeedback(null);
+    }
+    if (question != null) {
+      setQuestion(null);
+    }
+    fetchQuestion();
+  }
+
   const handleModalClose = () => {
     setAnswerProvided(false);
+    setFeedback(null);
   }
 
   useEffect(() => {
@@ -54,6 +81,7 @@ function QandAPage() {
   return (
     <>
     <SideBar></SideBar>
+    <Typography display="flex" justifyContent="center" alignItems="center" marginTop="5rem" sx={{justifyContent: "center", color: "white", fontSize: "48px"}}>{type} Question Practice</Typography>
     <Box
       display="flex"
       justifyContent="center"
@@ -68,7 +96,7 @@ function QandAPage() {
         sx={{backgroundColor: "black", color: "white", width: "600px", height: "200px"}}
       >
         {question ? (
-          <Typography sx={{fontSize: "12px"}}>{question}</Typography>
+          <Typography sx={{fontSize: "18px"}}>{question}</Typography>
         ) : (
           <Typography>Question loading...</Typography>
         )}
@@ -96,8 +124,7 @@ function QandAPage() {
       </Box>
     </Box>
 
-    {answerProvided ? (
-      <Modal open={answerProvided} onClose={handleModalClose}>
+      <Modal open={answerProvided}>
         <Box
           sx={{
             position: 'absolute',
@@ -111,15 +138,23 @@ function QandAPage() {
             p: 4,
           }}
         >
-          <h2>Your feedback:</h2>
+        {feedback ? (
+            <h2>Your Feedback:</h2>
+          ) : (
+            <h2>Loading your feedback...</h2>
+        )}
           <Typography>{feedback}</Typography>
+          {feedback ? (
+            <Box sx={{justifyContent: "center", marginLeft: "auto", marginRight: "auto"}}>
+            <Button sx={{...styles.modalButtons}}onClick={newQuestion}>Another Question</Button>
+            <Link href="/landing">
+                <Button sx={{...styles.modalButtons}}onClick={handleModalClose}>Home</Button>
+            </Link>
+          </Box>
+          ): (<></>)}
+          
         </Box>
-        <Button onClick={handleModalClose}>Another Question</Button>
-        <Link href="/landing">
-          <Button onClick={handleModalClose}>Home</Button>
-        </Link>
       </Modal>
-    ) : null}
     </>
   );
 }

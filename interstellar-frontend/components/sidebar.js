@@ -16,18 +16,26 @@ const Sidebar = () => {
                     <ListItemText primary="Home" />
                 </ListItem>
                 </Link>
-                <ListItem button sx={{...styles.sideBarItem}}>
-                    <ListItemText primary="Technical Questions" />
-                </ListItem>
-                <ListItem button sx={{...styles.sideBarItem}}>
-                    <ListItemText primary="STAR Questions" />
-                </ListItem>
-                <ListItem button sx={{...styles.sideBarItem}}>
-                    <ListItemText primary="Personality Questions" />
-                </ListItem>
-                <ListItem button sx={{...styles.sideBarItem}}>
-                    <ListItemText primary="Behavioral Questions" />
-                </ListItem>
+                <Link href="/Q&A?type=technical">
+                    <ListItem button sx={{...styles.sideBarItem}}>
+                        <ListItemText primary="Technical Questions" />
+                    </ListItem>
+                </Link>
+                <Link href="/Q&A?type=STAR">
+                    <ListItem button sx={{...styles.sideBarItem}}>
+                        <ListItemText primary="STAR Questions" />
+                    </ListItem>
+                </Link>
+                <Link href="/Q&A?type=Personality">
+                    <ListItem button sx={{...styles.sideBarItem}}>
+                        <ListItemText primary="Personality Questions" />
+                    </ListItem>
+                </Link>
+                <Link href="/Q&A?type=Behavioral">
+                    <ListItem button sx={{...styles.sideBarItem}}>
+                        <ListItemText primary="Behavioral Questions" />
+                    </ListItem>
+                </Link>
                 <ListItem button sx={{...styles.sideBarItem}}>
                     <ListItemText primary="Interview Simulator" />
                 </ListItem>
