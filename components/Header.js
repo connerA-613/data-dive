@@ -5,7 +5,7 @@ function Header() {
     return (
         <Box sx={{flexgrow: 1}}>
             <AppBar position="sticky" sx={{backgroundColor: "black"}}>
-            <Toolbar sx={{justifyContent: "space-between"}} disablegutters>
+            <Toolbar sx={{justifyContent: "space-between"}} disablegutters="true">
                 <Typography sx={{marginTop: "auto", marginBottom: "auto"}}>
                     Welcome, Conner
                 </Typography>

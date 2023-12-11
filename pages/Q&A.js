@@ -117,7 +117,7 @@ function QandAPage() {
         sx={{backgroundColor: "black"}}
       >
       <form onSubmit={handleSubmit}>
-        <TextField label="Enter your answer" inputType="text" onChange={handleInputChange} value={input} multiline rows={8} sx={{backgroundColor: "white", width: "500px", height: "200px"}}/>
+        <TextField label="Enter your answer" inputtype="text" onChange={handleInputChange} value={input} multiline rows={8} sx={{backgroundColor: "white", width: "500px", height: "200px"}}/>
       </form>
         {/* Add any other components or content here */}
         <Button type="submit" onClick={(e) => submitAnswer(e)} sx={{backgroundColor: "white", color: "black", textDecoration: "none", marginTop: "10px", justifyContent: "center",}}>Submit</Button>
@@ -136,6 +136,7 @@ function QandAPage() {
             border: '2px solid #000',
             boxShadow: 24,
             p: 4,
+            color: 'black'
           }}
         >
         {feedback ? (
