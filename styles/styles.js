@@ -27,5 +27,14 @@ const styles = {
             backgroundColor: "white",
             color: "black"
         }
+    },
+
+    modalButtons: {
+        backgroundColor: "black",
+        color: "white",
+        marginRight: "2px",
+        "&:hover": {
+            backgroundColor: "grey",
+        }
     }
 }; export default styles;
