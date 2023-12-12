@@ -6,41 +6,43 @@ import styles from '../styles/styles'
 
 const Sidebar = () => {
     return (
-        <Drawer
-            variant="permanent"
-            PaperProps={{ sx: { width: 240 , backgroundColor: "black"} }}
-        >
-            <List sx={{...styles.sideBar}}>
-                <Link href="/landing">
-                <ListItem button sx={{...styles.sideBarItem}}>
-                    <ListItemText primary="Home" />
-                </ListItem>
-                </Link>
-                <Link href="/Q&A?type=technical">
+        <div>
+            <Drawer
+                variant="permanent"
+                PaperProps={{ sx: { width: 240 , backgroundColor: "black"} }}
+            >
+                <List sx={{...styles.sideBar}}>
+                    <Link href="/landing">
                     <ListItem button sx={{...styles.sideBarItem}}>
-                        <ListItemText primary="Technical Questions" />
+                        <ListItemText primary="Home" />
                     </ListItem>
-                </Link>
-                <Link href="/Q&A?type=STAR">
+                    </Link>
+                    <Link href="/Q&A?type=technical">
+                        <ListItem button sx={{...styles.sideBarItem}}>
+                            <ListItemText primary="Technical Questions" />
+                        </ListItem>
+                    </Link>
+                    <Link href="/Q&A?type=STAR">
+                        <ListItem button sx={{...styles.sideBarItem}}>
+                            <ListItemText primary="STAR Questions" />
+                        </ListItem>
+                    </Link>
+                    <Link href="/Q&A?type=Personality">
+                        <ListItem button sx={{...styles.sideBarItem}}>
+                            <ListItemText primary="Personality Questions" />
+                        </ListItem>
+                    </Link>
+                    <Link href="/Q&A?type=Behavioral">
+                        <ListItem button sx={{...styles.sideBarItem}}>
+                            <ListItemText primary="Behavioral Questions" />
+                        </ListItem>
+                    </Link>
                     <ListItem button sx={{...styles.sideBarItem}}>
-                        <ListItemText primary="STAR Questions" />
+                        <ListItemText primary="Interview Simulator" />
                     </ListItem>
-                </Link>
-                <Link href="/Q&A?type=Personality">
-                    <ListItem button sx={{...styles.sideBarItem}}>
-                        <ListItemText primary="Personality Questions" />
-                    </ListItem>
-                </Link>
-                <Link href="/Q&A?type=Behavioral">
-                    <ListItem button sx={{...styles.sideBarItem}}>
-                        <ListItemText primary="Behavioral Questions" />
-                    </ListItem>
-                </Link>
-                <ListItem button sx={{...styles.sideBarItem}}>
-                    <ListItemText primary="Interview Simulator" />
-                </ListItem>
-            </List>
-        </Drawer>
+                </List>
+            </Drawer>
+        </div>
     );
 };
 

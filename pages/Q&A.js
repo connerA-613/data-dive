@@ -45,7 +45,7 @@ function QandAPage() {
   }
 
   async function fetchFeedback() {
-    const completion = await complete(`I was asked the question '${question}' for a data analyst job interview and this was my answer: ${input}. Can you please provide me with feedback on my answer, how my answer could improve and rate my answer out of 5 stars?`);
+    const completion = await complete(`In a data analyst interview I was asked "${question}" and I answered "${input}". I need you to give me strict but consice feedback like you are the interviewer for this interview. I need you to provide feedback on the answer, explain how there answer could improve, then give a very strict rating out of 5 stars. The less correct, unprepared, or unacceptable the answer is, the worse the rating becomes. For example, if I gave a perfect answer I should recieve 5 stars, if I provide an incomplete answer or am unsure of the answer, I should get 1 star`);
     setFeedback(completion);
   }
 
@@ -144,7 +144,7 @@ function QandAPage() {
           ) : (
             <h2>Loading your feedback...</h2>
         )}
-          <Typography>{feedback}</Typography>
+          <Typography sx={{ maxHeight: "600px", overflowY: "auto"}}>{feedback}</Typography>
           {feedback ? (
             <Box sx={{justifyContent: "center", marginLeft: "auto", marginRight: "auto"}}>
             <Button sx={{...styles.modalButtons}}onClick={newQuestion}>Another Question</Button>
