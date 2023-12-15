@@ -36,5 +36,17 @@ const styles = {
         "&:hover": {
             backgroundColor: "grey",
         }
+    },
+
+    submitButton: {
+        backgroundColor: "white", 
+        color: "black", 
+        textDecoration: "none", 
+        marginTop: "10px", 
+        justifyContent: "center",
+        "&:hover": {
+            backgroundColor: "grey",
+            color: "white"
+        }
     }
 }; export default styles;

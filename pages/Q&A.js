@@ -120,7 +120,7 @@ function QandAPage() {
         <TextField label="Enter your answer" inputtype="text" onChange={handleInputChange} value={input} multiline rows={8} sx={{backgroundColor: "white", width: "500px", height: "200px"}}/>
       </form>
         {/* Add any other components or content here */}
-        <Button type="submit" onClick={(e) => submitAnswer(e)} sx={{backgroundColor: "white", color: "black", textDecoration: "none", marginTop: "10px", justifyContent: "center",}}>Submit</Button>
+        <Button type="submit" onClick={(e) => submitAnswer(e)} sx={{...styles.submitButton}}>Submit</Button>
       </Box>
     </Box>
 
