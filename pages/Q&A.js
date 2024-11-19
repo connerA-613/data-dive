@@ -94,13 +94,13 @@ function QandAPage() {
   }, []);
   return (
     <>
-      <SideBar></SideBar>
+      <SideBar />
       <Typography
         display="flex"
         justifyContent="center"
         alignItems="center"
         marginTop="5rem"
-        sx={{ justifyContent: "center", color: "white", fontSize: "48px" }}
+        sx={{ justifyContent: "center", color: "white", fontSize: { xs: "24px", md: "48px" } }}
       >
         {type} Question Practice
       </Typography>
@@ -109,6 +109,7 @@ function QandAPage() {
         justifyContent="center"
         alignItems="center"
         height="50vh"
+        p={2}
       >
         <Box
           display="flex"
@@ -118,8 +119,8 @@ function QandAPage() {
           sx={{
             backgroundColor: "black",
             color: "white",
-            width: "600px",
-            height: "200px",
+            width: { xs: "90%", md: "600px" },
+            height: "auto",
           }}
         >
           {question ? (
@@ -134,6 +135,7 @@ function QandAPage() {
         justifyContent="center"
         alignItems="center"
         height="30vh"
+        p={2}
       >
         <Box
           display="flex"
@@ -141,7 +143,7 @@ function QandAPage() {
           alignItems="center"
           p={2}
           boxShadow={1}
-          sx={{ backgroundColor: "black" }}
+          sx={{ backgroundColor: "black", width: { xs: "90%", md: "auto" } }}
         >
           <form onSubmit={handleSubmit}>
             <TextField
@@ -151,14 +153,13 @@ function QandAPage() {
               value={input}
               multiline
               rows={8}
-              sx={{ backgroundColor: "white", width: "500px", height: "200px" }}
+              sx={{ backgroundColor: "white", width: { xs: "100%", md: "500px" }, height: "200px" }}
             />
           </form>
-          {/* Add any other components or content here */}
           <Button
             type="submit"
             onClick={(e) => submitAnswer(e)}
-            sx={{ ...styles.submitButton }}
+            sx={{ ...styles.submitButton, marginTop: 2 }}
           >
             Submit
           </Button>
@@ -172,7 +173,7 @@ function QandAPage() {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: 400,
+            width: { xs: "90%", md: 400 },
             bgcolor: "background.paper",
             border: "2px solid #000",
             boxShadow: 24,
@@ -194,9 +195,13 @@ function QandAPage() {
                 justifyContent: "center",
                 marginLeft: "auto",
                 marginRight: "auto",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                mt: 2,
               }}
             >
-              <Button sx={{ ...styles.modalButtons }} onClick={newQuestion}>
+              <Button sx={{ ...styles.modalButtons, mb: 1 }} onClick={newQuestion}>
                 Another Question
               </Button>
               <Link href="/landing">

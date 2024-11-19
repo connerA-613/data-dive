@@ -7,20 +7,23 @@ function HomePage() {
   return (
     <>
       <Header></Header>
-      <div
-        style={{
+      <Box
+        sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          padding: "16px",
         }}
       >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gridTemplateRows: "repeat(2, 1fr)",
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
             gap: "16px",
+            width: "100%",
+            maxWidth: "1200px",
           }}
         >
           <Link href="/Q&A?type=Behavioral">
@@ -74,8 +77,8 @@ function HomePage() {
               Interview Simulator
             </Button>
           </Link>
-        </div>
-      </div>
+        </Box>
+      </Box>
     </>
   );
 }

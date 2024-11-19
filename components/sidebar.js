@@ -12,42 +12,77 @@ import Link from "next/link";
 import styles from "../styles/styles";
 
 const Sidebar = () => {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <List sx={{ ...styles.sideBar }}>
+      <Link href="/landing">
+        <ListItem button sx={{ ...styles.sideBarItem }}>
+          <ListItemText primary="Home" />
+        </ListItem>
+      </Link>
+      <Link href="/Q&A?type=technical">
+        <ListItem button sx={{ ...styles.sideBarItem }}>
+          <ListItemText primary="Technical Questions" />
+        </ListItem>
+      </Link>
+      <Link href="/Q&A?type=STAR">
+        <ListItem button sx={{ ...styles.sideBarItem }}>
+          <ListItemText primary="STAR Questions" />
+        </ListItem>
+      </Link>
+      <Link href="/Q&A?type=Personality">
+        <ListItem button sx={{ ...styles.sideBarItem }}>
+          <ListItemText primary="Personality Questions" />
+        </ListItem>
+      </Link>
+      <Link href="/Q&A?type=Behavioral">
+        <ListItem button sx={{ ...styles.sideBarItem }}>
+          <ListItemText primary="Behavioral Questions" />
+        </ListItem>
+      </Link>
+      <ListItem button sx={{ ...styles.sideBarItem }}>
+        <ListItemText primary="Interview Simulator" />
+      </ListItem>
+    </List>
+  );
+
   return (
     <div>
+      <Button
+        onClick={handleDrawerToggle}
+        sx={{ backgroundColor: "black", color: "white" }}
+      >
+        Menu
+      </Button>
       <Drawer
         variant="permanent"
-        PaperProps={{ sx: { width: 240, backgroundColor: "black" } }}
+        sx={{
+          display: { xs: "none", sm: "none", md: "none", lg: "block" },
+          "& .MuiDrawer-paper": { width: 240, backgroundColor: "black" },
+          color: "black"
+        }}
+        open
       >
-        <List sx={{ ...styles.sideBar }}>
-          <Link href="/landing">
-            <ListItem button sx={{ ...styles.sideBarItem }}>
-              <ListItemText primary="Home" />
-            </ListItem>
-          </Link>
-          <Link href="/Q&A?type=technical">
-            <ListItem button sx={{ ...styles.sideBarItem }}>
-              <ListItemText primary="Technical Questions" />
-            </ListItem>
-          </Link>
-          <Link href="/Q&A?type=STAR">
-            <ListItem button sx={{ ...styles.sideBarItem }}>
-              <ListItemText primary="STAR Questions" />
-            </ListItem>
-          </Link>
-          <Link href="/Q&A?type=Personality">
-            <ListItem button sx={{ ...styles.sideBarItem }}>
-              <ListItemText primary="Personality Questions" />
-            </ListItem>
-          </Link>
-          <Link href="/Q&A?type=Behavioral">
-            <ListItem button sx={{ ...styles.sideBarItem }}>
-              <ListItemText primary="Behavioral Questions" />
-            </ListItem>
-          </Link>
-          <ListItem button sx={{ ...styles.sideBarItem }}>
-            <ListItemText primary="Interview Simulator" />
-          </ListItem>
-        </List>
+        {drawer}
+      </Drawer>
+      <Drawer
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        ModalProps={{
+          keepMounted: true,
+        }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": { width: 240, backgroundColor: "black" },
+        }}
+      >
+        {drawer}
       </Drawer>
     </div>
   );
